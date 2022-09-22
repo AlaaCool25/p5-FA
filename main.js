@@ -1,5 +1,9 @@
+
+noseX = 0;
+noseY = 0;
+
 function preload() {
-    
+    clownNose = loadImage('https://i.postimg.cc/QxdtsZF6/snotty-nose.png');
 }
 
 function setup() {
@@ -18,7 +22,10 @@ function modelLoaded() {
 
 function draw() {
     image(video,0,0,300,235);
-
+    //fill(174,0,1);
+    //stroke(211,166,37);
+    //circle(noseX,noseY,20);
+    image(clownNose,noseX,noseY,30,30);
 }
 
 function take_snapshot() {
@@ -28,7 +35,10 @@ function take_snapshot() {
 function gotPoses(results) {
     if (results.length > 0) {
         console.log(results);
-        console.log("nose x = " + results[0].pose.nose.x);
-        console.log("nose y = " + results[0].pose.nose.y);
+        noseX = results[0].pose.nose.x - 15 ;
+        noseY = results[0].pose.nose.y - 10 ;
+        console.log("nose x = " + noseX);
+        console.log("nose y = " + noseY);
     }
 }
+
